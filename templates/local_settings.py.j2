@@ -146,18 +146,20 @@ TIME_ZONE = '{{ graphite_time_zone }}'
 #
 # The default is 'django.db.backends.sqlite3' with file 'graphite.db'
 # located in STORAGE_DIR
-#
-#DATABASES = {
-#    'default': {
-#        'NAME': '/opt/graphite/storage/graphite.db',
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'USER': '',
-#        'PASSWORD': '',
-#        'HOST': '',
-#        'PORT': ''
-#    }
-#}
-#
+
+{% if graphite_db_type == 'postgresql' %}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': '{{ graphite_db_name }}',
+        'USER': '{{ graphite_db_user }}',
+        'PASSWORD': '{{ graphite_db_password }}',
+        'HOST': '{{ graphite_db_host }}',
+        'PORT': '{{ graphite_db_port }}'
+    }
+}
+{% endif %}
+
 
 
 #########################
