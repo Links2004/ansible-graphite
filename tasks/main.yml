@@ -31,6 +31,8 @@
     ansible_distribution_release == "bionic"
     or ansible_distribution_release == "xenial"
     or ansible_distribution_release == "stretch"
+    or ansible_distribution_release == "buster"
+    or ansible_distribution_release == "bullseye"
 
 - name: Setup graphite with pip
   pip:
@@ -45,6 +47,8 @@
     ansible_distribution_release != "bionic"
     and ansible_distribution_release != "xenial"
     and ansible_distribution_release != "stretch"
+    and ansible_distribution_release != "buster"
+    and ansible_distribution_release != "bullseye"
 
 - name: Set perms for graphite storage
   file:
